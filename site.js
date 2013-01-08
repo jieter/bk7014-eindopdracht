@@ -111,12 +111,12 @@ dvb.makeMap = function () {
 
 	var layerControl = new L.Control.Layers(
 		{
-			'omgeving': omgeving,
-			'Open streetmap': osm
+			'Bebouwing omgeving': omgeving,
+			'OpenStreetMap': osm
 		},
 		{
 			'Delft van Boven<br />Heat alle deelnemers': heat_all_all,
-			'Stadsweefsel Delft': weefsel
+			'Stadsweefsel Delft<br />(bebouwing)': weefsel
 		},
 		{
 			collapsed: false
