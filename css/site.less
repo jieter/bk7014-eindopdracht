@@ -111,6 +111,9 @@ a.button{
 			margin: 0 auto;
 
 			tr{
+				*{
+					font-size: 13px;
+				}
 				th:first-child {
 					width: 62%
 				}
@@ -143,9 +146,12 @@ a.button{
 					transform-origin: center center;
 					-moz-transform-origin: center center;
 					-webkit-transform-origin: center center;
+					-ms-transform-origin: center center;
+
 					transform: rotate(-90deg);
 					-moz-transform: rotate(-90deg);
 					-webkit-transform: rotate(-90deg);
+					-ms-transform: rotate(-90deg);
 
 					position: relative;
 					width: 140px;
@@ -196,4 +202,18 @@ a.button{
 			}
 		}
 	}
+}
+
+.leaflet-div-icon{
+	background: transparent;
+	border: 0;
+	white-space: nowrap;
+	
+	font: 14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 34px;
+	font-weight: bold;
+	color: #333;
+	text-shadow:
+		0.2em 0.2em 0.5em rgba(255,255,255, 0.9),
+		0.2em 0.2em 0.5em rgba(255,255,255, 0.9);
 }

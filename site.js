@@ -30,6 +30,8 @@ function resetHighlight(e) {
 
 
 dvb.addGeoJSON = function (url, map) {
+
+	var wijkNummers = L.layerGroup().addTo(map);
 	var layer = L.geoJson(null, {
 		style: function () {
 			return {
@@ -42,14 +44,34 @@ dvb.addGeoJSON = function (url, map) {
 			};
 		},
 		onEachFeature: function (feature, layer) {
+
+			var center = L.latLngBounds(
+				// flip x/y for it is a geojson layer.
+				feature.geometry.coordinates[0].map(function(a){
+					return [a[1], a[0]];
+				})
+			).getCenter();
+
+			wijkNummers.addLayer(L.marker(center, {
+				icon: L.divIcon({
+					iconSize: [40, 0],
+					html: feature.properties.WK_NAAM.substring(5, 7)
+				})
+			}));
+
 			layer.on({
 				'mouseover': function (e) {
 					highlightFeature(e);
 					dvb.drawPie(feature);
+					map.removeLayer(wijkNummers);
 				},
 				'mouseout': function (e) {
 					resetHighlight(e);
+					if (!map.hasLayer(wijkNummers)) {
+						map.addLayer(wijkNummers);
+					}
 					dvb.drawDichtheid(geojson);
+					
 				}
 			});
 		}
@@ -88,7 +110,6 @@ dvb.makeMap = function () {
 		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
 		.addAttribution(' &mdash; Data: <a href="http://www.kadaster.nl/top10nl/">Kadaster top10nl</a>, <a href="http://delftvanboven.nl/">Delft van boven</a>');
 	L.control.scale().addTo(map);
-
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
 	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
 	var osm = L.tileLayer(osm_url, {
@@ -115,7 +136,7 @@ dvb.makeMap = function () {
 			'OpenStreetMap': osm
 		},
 		{
-			'Delft van Boven<br />Heat alle deelnemers': heat_all_all,
+			'Delft van Boven<br />Heatmap alle deelnemers': heat_all_all,
 			'Stadsweefsel Delft<br />(bebouwing)': weefsel
 		},
 		{
@@ -134,6 +155,8 @@ dvb.makeMap = function () {
 
 	return map;
 };
+
+
 
 // Een grafiek met de dichtheid van elke wijk als bargraph.
 dvb.drawDichtheid = function(geojson) {
@@ -311,4 +334,10 @@ dvb.drawPie = function (feature) {
 
 $(function () {
 	dvb.makeMap();
+
+	$('.uitleg-trigger').on({
+		'click': function (){
+			$('#uitleg').show(400);
+		}
+	})
 });
