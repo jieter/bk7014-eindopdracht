@@ -221,7 +221,7 @@ dvb.drawPie = function (feature) {
 	var wijk = $('#wijk');
 	var plots = wijk.find('.plots').html('');
 
-	wijk.find('h2').html(props.WK_NAAM + '<span>Gegevens CBS</span>');
+	wijk.find('h2').html(props.WK_NAAM + '<span>&nbsp;</span>');
 
 	var table = wijk.find('table');
 	if (table.length === 0) {
