@@ -446,7 +446,7 @@
             "OPP_TOT": 155,
             "OPP_LAND": 152,
             "OPP_WATER": 3,
-            "oppervla": 1549869
+            "bebouwd": 44.2
         },
         "geometry": {
             "type": "Polygon",
@@ -712,7 +712,7 @@
             "OPP_TOT": 161,
             "OPP_LAND": 160,
             "OPP_WATER": 2,
-            "oppervla": 1614003
+            "bebouwd": 23.2
         },
         "geometry": {
             "type": "Polygon",
@@ -1433,7 +1433,7 @@
             "OPP_TOT": 141,
             "OPP_LAND": 134,
             "OPP_WATER": 7,
-            "oppervla": 1405973
+            "bebouwd": 18
         },
         "geometry": {
             "type": "Polygon",
@@ -1586,7 +1586,7 @@
             "OPP_TOT": 92,
             "OPP_LAND": 90,
             "OPP_WATER": 2,
-            "oppervla": 917387
+            "bebouwd": 16.3
         },
         "geometry": {
             "type": "Polygon",
@@ -1703,7 +1703,7 @@
             "OPP_TOT": 129,
             "OPP_LAND": 128,
             "OPP_WATER": 1,
-            "oppervla": 1291572
+            "bebouwd": 23.6
         },
         "geometry": {
             "type": "Polygon",
@@ -1880,7 +1880,7 @@
             "OPP_TOT": 226,
             "OPP_LAND": 217,
             "OPP_WATER": 9,
-            "oppervla": 2262475
+            "bebouwd": 31
         },
         "geometry": {
             "type": "Polygon",
@@ -2141,7 +2141,7 @@
             "OPP_TOT": 143,
             "OPP_LAND": 128,
             "OPP_WATER": 15,
-            "oppervla": 1429264
+            "bebouwd": 1.0
         },
         "geometry": {
             "type": "Polygon",
@@ -2457,7 +2457,7 @@
             "OPP_TOT": 202,
             "OPP_LAND": 189,
             "OPP_WATER": 12,
-            "oppervla": 2016618
+            "bebouwd": 40.5
         },
         "geometry": {
             "type": "Polygon",
@@ -2951,7 +2951,7 @@
             "OPP_TOT": 296,
             "OPP_LAND": 283,
             "OPP_WATER": 13,
-            "oppervla": 2958951
+            "bebouwd": 17.4
         },
         "geometry": {
             "type": "Polygon",
