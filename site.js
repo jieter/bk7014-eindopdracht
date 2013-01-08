@@ -97,7 +97,7 @@ var wijken;
 dvb.makeMap = function () {
 	var delftCenter = [52.002, 4.36];
 	var map = L.map('map', {
-		maxZoom: 16,
+		maxZoom: 17,
 		minZoom: 13,
 		maxBounds: L.latLngBounds(
 			[
@@ -108,7 +108,7 @@ dvb.makeMap = function () {
 
 	map.attributionControl
 		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
-		.addAttribution(' &mdash; Data: <a href="http://www.kadaster.nl/top10nl/">Kadaster top10nl</a>, <a href="http://delftvanboven.nl/">Delft van boven</a>');
+		.addAttribution(' &mdash; Data:<a href="#" class="uitleg-trigger">Bronvermelding</a>');
 	L.control.scale().addTo(map);
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
 	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
@@ -127,6 +127,7 @@ dvb.makeMap = function () {
 
 
 	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png').addTo(map);
+	var winkels = L.tileLayer('data/winkels/{z}/{x}/{y}.png').addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
@@ -137,7 +138,8 @@ dvb.makeMap = function () {
 		},
 		{
 			'Delft van Boven<br />Heatmap alle deelnemers': heat_all_all,
-			'Stadsweefsel Delft<br />(bebouwing)': weefsel
+			'Stadsweefsel Delft<br />(bebouwing)': weefsel,
+			'Winkels': winkels
 		},
 		{
 			collapsed: false
@@ -336,8 +338,17 @@ $(function () {
 	dvb.makeMap();
 
 	$('.uitleg-trigger').on({
-		'click': function (){
+		'click': function () {
+
 			$('#uitleg').show(400);
+
+			$('#uitleg').append('<div class="close">&times</div>');
+
+			$('#uitleg').find('.close').on({
+				click: function () {
+					$('#uitleg').hide(300);
+				}
+			})
 		}
-	})
+	}).click();
 });
