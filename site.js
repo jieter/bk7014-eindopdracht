@@ -98,14 +98,14 @@ dvb.makeMap = function () {
 	});
 
 	var omgeving = L.tileLayer('data/omgeving/{z}/{x}/{y}.png').addTo(map);
-	var heat_all_all = L.tileLayer('data/heat_all_all/Mapnik/{z}/{x}/{y}.png', {
+	var heat_all_all = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {
 			opacity: 0.6
 		}
 	).addTo(map);
 
 
 
-	var weefsel = L.tileLayer('data/weefsel/Mapnik/{z}/{x}/{y}.png').addTo(map);
+	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png').addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
