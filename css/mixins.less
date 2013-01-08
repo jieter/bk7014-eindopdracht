@@ -1,0 +1,51 @@
+/**
+ * Less mixins
+ */
+ 
+.centering(@width){
+	width: @width;
+	margin-left: auto;
+	margin-right: auto;
+}
+.hidden{
+	display: none;
+}
+.inner-shadow(@horizontal:0, @vertical:1px, @blur:2px, @alpha: 0.4) {
+	-webkit-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+	box-shadow: inset @horizontal @vertical @blur rgba(0, 0, 0, @alpha);
+}
+.drop-shadow(@x-axis: 0, @y-axis: 1px, @blur: 2px, @alpha: 0.1) {
+	-webkit-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+	-moz-box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+	box-shadow: @x-axis @y-axis @blur rgba(0, 0, 0, @alpha);
+}
+.gradient-horizontal(@grStart, @grStop) {
+	background-color: @grStop;
+	background-image: -webkit-gradient(linear, left, right, from(@grStart), to(@grStop)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(left, @grStart, @grStop); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(left, @grStart, @grStop); /* FF3.6 */
+	background-image: -ms-linear-gradient(left, @grStart, @grStop); /* IE10 */
+	background-image: -o-linear-gradient(left, @grStart, @grStop); /* Opera 11.10+ */
+	background-image: linear-gradient(to right, @grStart, @grStop);
+}
+.gradient-vertical(@grStart, @grStop) {
+	background-color: @grStop;
+	background-image: -webkit-gradient(linear, top, bottom, from(@grStart), to(@grStop)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(top, @grStart, @grStop); /* Chrome 10+, Saf5.1+, iOS 5+ */
+	background-image: -moz-linear-gradient(top, @grStart, @grStop); /* FF3.6 */
+	background-image: -ms-linear-gradient(top, @grStart, @grStop); /* IE10 */
+	background-image: -o-linear-gradient(top, @grStart, @grStop); /* Opera 11.10+ */
+	background-image: linear-gradient(to bottom, @grStart, @grStop);
+}
+.rounded(@radius) {
+	-webkit-border-radius: @radius;
+	-moz-border-radius: @radius;
+	border-radius: @radius;
+}
+.transition-linear(@what, @time) {
+	-webkit-transition: @what linear @time;
+	-moz-transition: @what linear @time;
+	-o-transition: @what linear @time;
+	transition: @what linear @time;
+}

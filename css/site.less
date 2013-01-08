@@ -1,0 +1,197 @@
+/**
+ * Delft van Boven - site
+ * display tracks in Leaflet map
+ *
+ * @author: Jan Pieter Waagmeester
+ */
+
+@sidebarwidth: 30%;
+@headerheight: 90px;
+@metaheight: 120px;
+
+/* Textcolor for most of the text */
+@textColor: #333333;
+
+/* Buttons */
+@buttonColor: #eeffff;
+@okButton: #5BB75B;
+@errorButton: #DA4F49;
+
+
+
+
+@import 'mixins.less';
+
+/* Site style */
+html, body, div, header, footer{
+	padding: 0px;
+	margin: 0px;
+}
+body{
+	background-color: #ffffff;
+	color: @textColor;
+	font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 20px;
+}
+a{
+	&.email{
+		font-family: monospace;
+	}
+}
+.hidden{
+	display: none;
+}
+.button{
+	.gradient-vertical(lighten(@buttonColor, 10%), darken(@buttonColor, 15%));
+
+	color: #FFFFFF;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	.rounded(4px);
+
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+
+	box-shadow: 0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);
+
+	padding: 4px 14px;
+	display: inline-block;
+	cursor: pointer;
+
+	&.big{
+		font-size: 20px;
+		padding: 8px 14px;
+	}
+
+	&.ok{
+		.gradient-vertical(lighten(@okButton, 10%), darken(@okButton, 15%));
+	}
+	&.error{
+		.gradient-vertical(lighten(@errorButton, 10%), darken(@errorButton, 15%));
+	}
+}
+a.button{
+	text-decoration: none;
+}
+#map{
+	left: @sidebarwidth;
+	right: 0px;
+	top: 0px;
+	position: absolute;
+	bottom: 0px;
+	border: 1px solid black;
+	background: white;
+}
+
+#sidebar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: @sidebarwidth;
+
+	height: 100%;
+	overflow-y: scroll;
+	overflow-x: hidden;
+
+	#wijk {
+		margin-top: 20px;
+		margin-bottom: 20px;
+		h2 {
+			font-size: 20px;
+			text-align: center;
+			span {
+				display: block;
+				font-size: 13px;
+				font-weight: 100;
+			}
+		}
+		table.datatable {
+			width: 70%;
+			margin: 0 auto;
+
+			tr{
+				th:first-child {
+					width: 62%
+				}
+				td:nth-child(2) {
+					width: 30%;
+					text-align: right;
+				}
+				td:last-child {
+					width: 8%;
+					text-align: left;
+					color: #888;
+				}
+			}
+		}
+		.plots {
+			border-bottom: 1px solid #ccc;
+			.plotBox {
+				clear: both;
+				padding: 10px 0;
+				border-top: 1px solid #ccc;
+
+				.floatL {
+					clear: both;
+					float: left;
+					height: 140px;
+					width: 20px;
+					margin-left: 15px;
+				}
+				h2 {
+					-moz-transform-origin: center center;
+					-webkit-transform-origin: center center;
+					position: relative;
+					width: 140px;
+					-moz-transform: rotate(-90deg);
+					-webkit-transform: rotate(-90deg);
+					margin-top: 60px;
+					margin-left: -60px;
+					font-size: 20px;
+					font-weight: 100;
+				}
+				.plot {
+					font-family: "Helvetica Nue", Helvetica, Arial, sans-serif;
+					margin-left: 18%;
+					width: 80%;
+					height: 140px;
+					&.Bebouwings-_dichtheid {
+						height: 180px;
+					}
+				}
+
+			}
+		}
+	}
+}
+
+.leaflet-number-marker {
+	-webkit-border-radius: 999px;
+	-moz-border-radius: 999px;
+	border-radius: 999px;
+	width: 10px;
+	height: 10px;
+	padding: 0;
+
+	background: #fff;
+	border: 2px solid #444;
+
+	color: black;
+	text-align: center;
+
+	font-size: 7px;
+	line-height: 10px;
+}
+.leaflet-control-layers {
+	.leaflet-control-layers-overlays {
+
+		label {
+			clear: both;
+			span {
+				float: right; width: 80%;
+			}
+		}
+	}
+}
