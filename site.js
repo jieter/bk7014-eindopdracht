@@ -351,24 +351,5 @@ $(function () {
 		}
 	}).click();
 
-	var $dragging = null;
-	$(document.body).on({
-		'mousemove': function (e) {
-			if ($dragging) {
-				$dragging.offset({
-					top: e.pageY,
-					left: e.pageX
-				});
-			}
-		},
-		'mouseup': function (e) {
-			L.DomUtil.enableTextSelection();
-			$dragging = null;
-		}
-	});
-
-	$(document.body).on('mousedown', '.uitleg h1', function (e) {
-		L.DomUtil.disableTextSelection();
-		$dragging = $(e.target).parent();
-	});
+	$('.uitleg').drags({'handle': 'h1'});
 });
