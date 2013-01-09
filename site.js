@@ -54,7 +54,7 @@ dvb.addGeoJSON = function (url, map) {
 
 			wijkNummers.addLayer(L.marker(center, {
 				icon: L.divIcon({
-					iconSize: [40, 0],
+					iconSize: [40, 40],
 					html: feature.properties.WK_NAAM.substring(5, 7)
 				})
 			}));
@@ -71,7 +71,6 @@ dvb.addGeoJSON = function (url, map) {
 						map.addLayer(wijkNummers);
 					}
 					dvb.drawDichtheid(geojson);
-					
 				}
 			});
 		}
@@ -351,4 +350,25 @@ $(function () {
 			})
 		}
 	}).click();
+
+	var $dragging = null;
+	$(document.body).on({
+		'mousemove': function (e) {
+			if ($dragging) {
+				$dragging.offset({
+					top: e.pageY,
+					left: e.pageX
+				});
+			}
+		},
+		'mouseup': function (e) {
+			L.DomUtil.enableTextSelection();
+			$dragging = null;
+		}
+	});
+
+	$(document.body).on('mousedown', '.uitleg h1', function (e) {
+		L.DomUtil.disableTextSelection();
+		$dragging = $(e.target).parent();
+	});
 });
