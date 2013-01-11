@@ -27,11 +27,11 @@ function highlightFeature(e) {
 function resetHighlight(e) {
 	wijken.resetStyle(e.target);
 }
-
+var wijkNummers
 
 dvb.addGeoJSON = function (url, map) {
 
-	var wijkNummers = L.layerGroup().addTo(map);
+	wijkNummers = L.layerGroup().addTo(map);
 	var layer = L.geoJson(null, {
 		style: function () {
 			return {
@@ -122,12 +122,12 @@ dvb.makeMap = function () {
 	var heat_all_all = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {
 			opacity: 0.6
 		}
-	).addTo(map);
+	);//.addTo(map);
 
 
 
-	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png').addTo(map);
-	var winkels = L.tileLayer('data/winkels/{z}/{x}/{y}.png').addTo(map);
+	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
+	var winkels = L.tileLayer('data/winkels/{z}/{x}/{y}.png');//.addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
@@ -137,9 +137,11 @@ dvb.makeMap = function () {
 			'OpenStreetMap': osm
 		},
 		{
+			'Wijknummers': wijkNummers,
 			'Delft van Boven<br />Heatmap alle deelnemers': heat_all_all,
 			'Stadsweefsel Delft<br />(bebouwing)': weefsel,
 			'Winkels': winkels
+
 		},
 		{
 			collapsed: false
