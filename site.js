@@ -345,12 +345,11 @@ dvb.drawPie = function (feature) {
 $(function () {
 	dvb.makeMap();
 
+	var uitleg = $('#uitleg');
+
 	$('.uitleg-trigger, #tabs li').on({
 		'click': function () {
-			var uitleg = $('#uitleg');
 			uitleg.fadeIn(400);
-			uitleg.append('<div class="close">&times</div>');
-
 			var tab = uitleg.find($(this).attr('rel'));
 
 			if (tab.length === 1) {
@@ -360,14 +359,22 @@ $(function () {
 				tab.fadeIn(400).addClass('active');
 
 			}
-			uitleg.find('.close').on({
-				click: function () {
-					$('#uitleg').hide(300);
-				}
-			});
 		}
 	});
-	$('#uitleg div').hide();
+	uitleg.find('div').hide();
+	uitleg.append('<div class="controls"><div class="close">&times</div><div class="bigger">&para;</div></div>');
+
+	uitleg.find('.close').on({
+		click: function () {
+			uitleg.hide(300);
+		}
+	});
+	uitleg.find('.bigger').on({
+		click: function () {
+			uitleg.toggleClass('bigger');
+		}
+	})
+
 	$('#tabs li[rel="#home"]').click();
 
 	$('.uitleg').drags({'handle': 'h1'});
