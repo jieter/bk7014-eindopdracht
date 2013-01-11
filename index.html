@@ -44,33 +44,55 @@
 	<div id="uitleg" class="uitleg hidden">
 		<h1>BK7014 &mdash; Leefomgeving en Activiteiten</h1>
 
-		<h2>Opdracht</h2>
-		<p>
-			"Analyseer het <em>stadsweefsel</em> in relatie tot de bewegingspatronen en modaliteit (BK7015)". Gebruik daarvoor de theorie van Meyer.
-		</p>
-
-		<h2>Methodiek</h2>
-		<p>
-			Vanuit de Top10NL-dataset hebben we de gebouwen binnen de gemeentegrenzen van Delft (volgens de Wijk- en buurtkaart) geselecteerd, gestyled met Qgis en met de <a href="http://hub.qgis.org/projects/qtiles">Qtiles plugin</a> geëxporteerd naar <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Slippy map tiles</a>.
-		</p>
-
-
-		<h2>Bronnen</h2>
-		<ul class="bronnen">
-			<li>
-				<a href="http://kadaster.nl/top10nl/">Kadaster top10NL</a>, in GML-formaat, gedownload van <a href="http://mirror.openstreetmap.nl/kadaster/Top10NL_v1_1_1/">Openstreetmap mirror</a>
-			</li>
-			<li>
-				CBS <a href="http://www.cbs.nl/nl-NL/menu/themas/dossiers/nederland-regionaal/publicaties/geografische-data/archief/2012/2012-wijk-en-buurtkaart-2011-art.htm">Wijk- en buurtkaart 2011</a>
-			</li>
-
-			<li>
-				Onderzoeksdata <a href="http://delftvanboven.nl">Delft van Boven</a>
-			</li>
-			<li>
-				Diverse boeken van Meyer uit de Bouwkundebibliotheek
-			</li>
+		<ul id="tabs">
+			<li rel="#home">Home</li>
+			<li rel="#analyse">Analyse</li>
+			<li rel="#methodiek">Methodiek</li>
+			<li rel="#credits">Credits</li>
 		</ul>
+
+		<div id="home" class="active">
+			<h2>Opdracht</h2>
+			<p>
+				"Analyseer het <em>stadsweefsel</em> in relatie tot de bewegingspatronen en modaliteit (BK7015)". Gebruik daarvoor de theorie van Meyer.
+			</p>
+		</div>
+		<div id="analyse">
+			<h2>Wat zien we </h2>
+		</div>
+		<div id="methodiek">
+			<h2>Methodiek</h2>
+			<p>
+				Vanuit de Top10NL-dataset hebben we de gebouwen binnen de gemeentegrenzen van Delft (volgens de Wijk- en buurtkaart) geselecteerd, gestyled met Qgis en met de <a href="http://hub.qgis.org/projects/qtiles">Qtiles plugin</a> geëxporteerd naar <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Slippy map tiles</a>.
+			</p>
+		</div>
+
+		<div id="credits">
+			Opdracht door Roxanne Kiel en Jan Pieter Waagmeester
+
+			<h2>Software</h2>
+			<ul>
+				<li><a href="http://leafletjs.com">Leaflet</a></li>
+				<li><a href="http://qgis.org">Quantum GIS</li></li>
+				<li>QGIS's <a href="http://hub.qgis.org/projects/qtiles">Qtiles plugin</a></li>
+			</ul>
+
+			<h2>Bronnen</h2>
+			<ul class="bronnen">
+				<li>
+					<a href="http://kadaster.nl/top10nl/">Kadaster top10NL</a>, in GML-formaat, gedownload van <a href="http://mirror.openstreetmap.nl/kadaster/Top10NL_v1_1_1/">Openstreetmap mirror</a>
+				</li>
+				<li>
+					CBS <a href="http://www.cbs.nl/nl-NL/menu/themas/dossiers/nederland-regionaal/publicaties/geografische-data/archief/2012/2012-wijk-en-buurtkaart-2011-art.htm">Wijk- en buurtkaart 2011</a>
+				</li>
+
+				<li>
+					Onderzoeksdata <a href="http://delftvanboven.nl">Delft van Boven</a>
+				</li>
+				<li>
+					Diverse boeken van Meyer uit de Bouwkundebibliotheek
+				</li>
+			</ul>
 	</div>
 </body>
 </html>

@@ -47,7 +47,7 @@ dvb.addGeoJSON = function (url, map) {
 
 			var center = L.latLngBounds(
 				// flip x/y for it is a geojson layer.
-				feature.geometry.coordinates[0].map(function(a){
+				feature.geometry.coordinates[0].map(function (a) {
 					return [a[1], a[0]];
 				})
 			).getCenter();
@@ -78,7 +78,7 @@ dvb.addGeoJSON = function (url, map) {
 
 	$.getJSON(url).success(function (response) {
 		// amend properties with bebouwingsdichtheid.
-		$.each(response.features, function (k, v){
+		$.each(response.features, function (k, v) {
 			var props = v.properties;
 
 			response.features[k].properties.bebouwingsdichtheid = (props.bebouwd / props.OPP_TOT);
@@ -107,7 +107,8 @@ dvb.makeMap = function () {
 
 	map.attributionControl
 		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
-		.addAttribution(' &mdash; Data:<a href="#" class="uitleg-trigger">Bronvermelding</a>');
+		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Bronvermelding</a>');
+
 	L.control.scale().addTo(map);
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
 	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
@@ -160,7 +161,7 @@ dvb.makeMap = function () {
 
 
 // Een grafiek met de dichtheid van elke wijk als bargraph.
-dvb.drawDichtheid = function(geojson) {
+dvb.drawDichtheid = function (geojson) {
 	var wijk = $('#wijk');
 	wijk.find('h2').html('<h2>Wijken van Delft. <span>Beweeg muis over wijken voor details...</span></h2>');
 	var plots = wijk.find('.plots').html('');
@@ -188,19 +189,27 @@ dvb.drawDichtheid = function(geojson) {
 				'</div>' +
 				'<div class="plot ' + grafieknaam + '"></div>' +
 			'</div>').find('.' + grafieknaam);
-		el = plots.find('.' + grafieknaam);
+		var el = plots.find('.' + grafieknaam);
 
 		makeBar(el, data);
 	});
 
 
 	function makeBar(el, data) {
-		var d1, xaxisLabels = [], i=0;
+		var d1, xaxisLabels = [], i = 0;
 
-		d1 = data.map(function(elt) { return {label: elt[1], data: [[i++, elt[0]]]}; });
+		d1 = data.map(function (elt) {
+			return {
+				label: elt[1],
+				data: [[i++, elt[0]]]
+			};
+		});
 		i = 0;
 		// example for xaxis option: {ticks: [[1,'One'], [2,'Two'], [3,'Three'], [4,'Four'], [5,'Five']]},
-		xaxisLabels = data.map(function(elt) { return [i++, elt[1]]; });
+		xaxisLabels = data.map(function (elt) {
+			return [i++, elt[1]];
+		});
+
 		$.plot(
 			el,
 			d1,
@@ -224,7 +233,7 @@ dvb.drawDichtheid = function(geojson) {
 					max: 13
 				},
 				yaxis: {
-					ticks: 4,
+					ticks: 4
 				},
 				grid: {
 					show: true,
@@ -336,20 +345,30 @@ dvb.drawPie = function (feature) {
 $(function () {
 	dvb.makeMap();
 
-	$('.uitleg-trigger').on({
+	$('.uitleg-trigger, #tabs li').on({
 		'click': function () {
+			var uitleg = $('#uitleg');
+			uitleg.fadeIn(400);
+			uitleg.append('<div class="close">&times</div>');
 
-			$('#uitleg').show(400);
+			var tab = uitleg.find($(this).attr('rel'));
 
-			$('#uitleg').append('<div class="close">&times</div>');
+			if (tab.length === 1) {
+				$('#tabs').find('.active').removeClass('active');
+				$('#tabs').find('li[rel="' + $(this).attr('rel') + '"]').addClass('active');
+				uitleg.find('div.active').hide();
+				tab.fadeIn(400).addClass('active');
 
-			$('#uitleg').find('.close').on({
+			}
+			uitleg.find('.close').on({
 				click: function () {
 					$('#uitleg').hide(300);
 				}
-			})
+			});
 		}
-	}).click();
+	});
+	$('#uitleg div').hide();
+	$('#tabs li[rel="#home"]').click();
 
 	$('.uitleg').drags({'handle': 'h1'});
 });
