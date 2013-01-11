@@ -190,8 +190,9 @@ a.button{
 	.drop-shadow( 3px, 3px, 6px, 0.6);
 
 	font-size: 14px;
+
+	.transition-linear(width 0.2s, 0s);
 	&.bigger {
-		.transition-linear(width 0.2s, 0s);
 		width: 40%;
 		font-size: 16px;
 	}
@@ -206,7 +207,6 @@ a.button{
 			display: inline;
 			float: left;
 			padding: 4px 8px;
-			
 			cursor: pointer;
 
 			&.active {

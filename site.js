@@ -368,7 +368,8 @@ $(function () {
 	uitleg.find('#content div').hide();
 
 	uitleg.find('.close').on({
-		click: function () {
+		click: function (e) {
+			e.stopPropagation();
 			uitleg.hide(300);
 		}
 	});
