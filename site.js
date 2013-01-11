@@ -109,7 +109,9 @@ dvb.makeMap = function () {
 		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
 		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Bronvermelding</a>');
 
-	L.control.scale().addTo(map);
+	L.control.scale({
+		imperial: false
+	}).addTo(map);
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
 	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
 	var osm = L.tileLayer(osm_url, {
@@ -363,8 +365,7 @@ $(function () {
 			}
 		}
 	});
-	uitleg.find('div').hide();
-	uitleg.append('<div class="controls"><div class="close">&times</div><div class="bigger">&para;</div></div>');
+	uitleg.find('#content div').hide();
 
 	uitleg.find('.close').on({
 		click: function () {

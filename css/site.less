@@ -179,6 +179,7 @@ a.button{
 #uitleg {
 	position: fixed;
 	z-index: 99999999999;
+	left: 33%;
 
 	width: 30%;
 	margin: 60px 20px;
@@ -190,6 +191,8 @@ a.button{
 
 	font-size: 14px;
 	&.bigger {
+		.transition-linear(width 0.2s, 0s);
+		width: 40%;
 		font-size: 16px;
 	}
 	#tabs {
@@ -234,16 +237,21 @@ a.button{
 	p {
 		text-align: justify;
 	}
-	.controls {
-		position: absolute;
-		top: 15px;
-		right: 10px;
+	#tabs li.controls {
+		&:hover{
+			background:transparent;
+		}
+		float: right;
+		display: block;
+		width: 40px;
 		* {
+			display: inline-block;
+
 			cursor: pointer;
 			font-size: 16px;
 			color: #888;
 			float: right;
-			padding: 0 3px;
+			padding: 0 4px;
 			width: 10px;
 
 			&:hover {
