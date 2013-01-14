@@ -129,7 +129,7 @@ dvb.makeMap = function () {
 
 
 	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
-	var winkels = L.tileLayer('data/winkels/{z}/{x}/{y}.png');//.addTo(map);
+	var openbarePlint = L.tileLayer('data/plint/Mapnik/{z}/{x}/{y}.png');//.addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
@@ -142,7 +142,7 @@ dvb.makeMap = function () {
 			'Wijknummers': wijkNummers,
 			'Delft van Boven<br />Heatmap alle deelnemers': heat_all_all,
 			'Stadsweefsel Delft<br />(bebouwing)': weefsel,
-			'Winkels': winkels
+			'Openbare plint': openbarePlint
 
 		},
 		{
@@ -351,7 +351,7 @@ $(function () {
 
 	var uitleg = $('#uitleg');
 
-	$('.uitleg-trigger, #tabs li').on({
+	$('.uitleg-trigger, #tabs li[rel]').on({
 		'click': function () {
 			uitleg.fadeIn(400);
 			var tab = uitleg.find($(this).attr('rel'));
