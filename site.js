@@ -129,7 +129,7 @@ dvb.makeMap = function () {
 
 
 	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
-	var openbarePlint = L.tileLayer('data/plint/Mapnik/{z}/{x}/{y}.png');//.addTo(map);
+	var openbarePlint = L.tileLayer('data/plint/{z}/{x}/{y}.png');//.addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
@@ -167,7 +167,7 @@ dvb.makeMap = function () {
 // Een grafiek met de dichtheid van elke wijk als bargraph.
 dvb.drawDichtheid = function (geojson) {
 	var wijk = $('#wijk');
-	wijk.find('h2').html('<h2>Wijken van Delft. <span>Beweeg muis over wijken voor details...</span></h2>');
+	wijk.find('h2').html('<h2>Wijken van Delft.</h2>');
 	var plots = wijk.find('.plots').html('');
 
 	$.each({
@@ -258,7 +258,7 @@ dvb.drawPie = function (feature) {
 	var wijk = $('#wijk');
 	var plots = wijk.find('.plots').html('');
 
-	wijk.find('h2').html(props.WK_NAAM + '<span>&nbsp;</span>');
+	wijk.find('h2').html(props.WK_NAAM);
 
 	var table = wijk.find('table');
 	if (table.length === 0) {
@@ -272,7 +272,7 @@ dvb.drawPie = function (feature) {
 			'Huishoudens': { key: 'AANTAL_HH' },
 			'Inwoners': { key: 'AANT_INW' },
 			'Oppervlakte': { key: 'OPP_TOT', eenheid: 'Ha' },
-			'Opp. water': { key: 'OPP_WATER', eenheid: 'Ha' },
+		//	'Opp. water': { key: 'OPP_WATER', eenheid: 'Ha' },
 			'Opp. bebouwd': { key: 'bebouwd', eenheid: 'Ha' },
 			'Bebouwingsdichtheid': { key: 'bebouwingsdichtheid' }
 		},
