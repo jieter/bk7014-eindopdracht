@@ -79,7 +79,7 @@ dvb.addGeoJSON = function (url, map) {
 			var props = v.properties;
 
 			response.features[k].properties.bebouwingsdichtheid = (props.bebouwd / props.OPP_TOT);
-			response.features[k].properties.deelnemers = props.deelnemers || 0;
+			response.features[k].properties.deelnemers = isNaN(props.deelnemers) ? 0 : props.deelnemers;
 		});
 
 		layer.addData(response);
