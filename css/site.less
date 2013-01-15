@@ -199,7 +199,6 @@ a.button{
 	&.presentation {
 		max-width: none;
 		font-size: 16px;
-		font-weight: 400;
 		background-color: black;
 		color: white;
 
@@ -315,11 +314,15 @@ a.button{
 		padding-left: 0;
 		li {
 			font-size: 0.9em;
+
 		}
 		li:before{
 			content: '■';
 			color: #999;
 			padding-right: 4px;
+			position: relative;
+			float:left;
+			left: -10px;
 		}
 	}
 }

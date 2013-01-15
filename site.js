@@ -79,6 +79,7 @@ dvb.addGeoJSON = function (url, map) {
 			var props = v.properties;
 
 			response.features[k].properties.bebouwingsdichtheid = (props.bebouwd / props.OPP_TOT);
+			response.features[k].properties.deelnemers = props.deelnemers || 0;
 		});
 
 		layer.addData(response);
@@ -267,7 +268,8 @@ dvb.drawPie = function (feature) {
 			'Oppervlakte': { key: 'OPP_TOT', eenheid: 'Ha' },
 		//	'Opp. water': { key: 'OPP_WATER', eenheid: 'Ha' },
 			'Opp. bebouwd': { key: 'bebouwd', eenheid: 'Ha' },
-			'Bebouwingsdichtheid': { key: 'bebouwingsdichtheid' }
+			'Bebouwingsdichtheid': { key: 'bebouwingsdichtheid' },
+			'Deelnemers (DVB)': { key: 'deelnemers'}
 		},
 		function (label, value) {
 			table.append(

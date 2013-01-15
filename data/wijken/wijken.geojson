@@ -35,7 +35,8 @@
             "OPP_TOT": 145,
             "OPP_LAND": 133,
             "OPP_WATER": 12,
-            "bebouwd": 56
+            "bebouwd": 56,
+            "deelnemers": 16
         },
         "geometry": {
             "type": "Polygon",
@@ -208,7 +209,8 @@
             "OPP_TOT": 152,
             "OPP_LAND": 147,
             "OPP_WATER": 5,
-            "bebouwd": 31
+            "bebouwd": 31,
+            "deelnemers": 19
         },
         "geometry": {
             "type": "Polygon",
@@ -446,7 +448,8 @@
             "OPP_TOT": 155,
             "OPP_LAND": 152,
             "OPP_WATER": 3,
-            "bebouwd": 44.2
+            "bebouwd": 44.2,
+            "deelnemers": 13
         },
         "geometry": {
             "type": "Polygon",
@@ -712,7 +715,8 @@
             "OPP_TOT": 161,
             "OPP_LAND": 160,
             "OPP_WATER": 2,
-            "bebouwd": 23.2
+            "bebouwd": 23.2,
+            "deelnemers": 1
         },
         "geometry": {
             "type": "Polygon",
@@ -1703,7 +1707,8 @@
             "OPP_TOT": 129,
             "OPP_LAND": 128,
             "OPP_WATER": 1,
-            "bebouwd": 23.6
+            "bebouwd": 23.6,
+            "deelnemers": 8
         },
         "geometry": {
             "type": "Polygon",
@@ -1880,7 +1885,8 @@
             "OPP_TOT": 226,
             "OPP_LAND": 217,
             "OPP_WATER": 9,
-            "bebouwd": 31
+            "bebouwd": 31,
+            "deelnemers": 6
         },
         "geometry": {
             "type": "Polygon",
@@ -2457,7 +2463,8 @@
             "OPP_TOT": 202,
             "OPP_LAND": 189,
             "OPP_WATER": 12,
-            "bebouwd": 40.5
+            "bebouwd": 40.5,
+            "deelnemers": 1
         },
         "geometry": {
             "type": "Polygon",
@@ -2676,7 +2683,8 @@
             "OPP_TOT": 264,
             "OPP_LAND": 254,
             "OPP_WATER": 10,
-            "bebouwd": 58.1
+            "bebouwd": 58.1,
+            "deelnemers": 8
         },
         "geometry": {
             "type": "Polygon",
