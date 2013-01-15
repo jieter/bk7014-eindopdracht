@@ -16,11 +16,13 @@
 @buttonColor: #eeffff;
 @okButton: #5BB75B;
 @errorButton: #DA4F49;
-
-
-
-
 @import 'mixins.less';
+
+* {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
 
 /* Site style */
 html, body, div, header, footer{
@@ -42,6 +44,9 @@ a{
 }
 .hidden{
 	display: none;
+}
+.clickable{
+	cursor: pointer;
 }
 .button{
 	.gradient-vertical(lighten(@buttonColor, 10%), darken(@buttonColor, 15%));
@@ -182,6 +187,7 @@ a.button{
 	left: 33%;
 
 	width: 30%;
+	min-width: 410px;
 	max-width: 450px;
 	min-height: 40%;
 	margin: 60px 20px;
@@ -197,17 +203,20 @@ a.button{
 	.transition-linear(width 0.2s, 0s);
 
 	&.presentation {
+		min-width: 480px;
 		max-width: none;
 		font-size: 16px;
 		background-color: black;
 		color: white;
 
 		.transition-linear(top 0.1s, 0s);
-		p {
-			max-width: 450px;
+		p, ul {
+			max-width: 380px;
 		}
 		#tabs {
-			background-color: rgba(255,255,255, 0.4);
+			background-color: rgba(255,255,255, 0.2);
+			width: 100%;
+			max-width: none;
 			li.controls{
 
 				* {
@@ -258,7 +267,7 @@ a.button{
 		font-weight: 100;
 	}
 	h2 {
-		font-size: 1.2em;
+		font-size: 1.1em;
 		margin-bottom: 4px;
 
 	}
@@ -274,7 +283,7 @@ a.button{
 		}
 		float: right;
 		display: block;
-		width: 40px;
+		width: 60px;
 		* {
 			display: inline-block;
 
@@ -282,7 +291,7 @@ a.button{
 			font-size: 16px;
 			color: #888;
 			float: right;
-			padding: 0 4px;
+			padding: 0 8px;
 			width: 10px;
 
 			&:hover {
@@ -297,6 +306,14 @@ a.button{
 			right: 10px;
 			bottom: 10px;
 			z-index: 9999999999;
+
+			background: transparent;
+			color: black;
+			border: 0;
+			.transition-linear(all 0.2s, 0s);
+			&:hover {
+				background-color: rgba(0,0,0,0.1);
+			}
 		}
 
 	}
@@ -305,7 +322,7 @@ a.button{
 		width: 100%;
 		padding: 130px 0;
 		a {
-			font-size: 25px;
+			font-size: 22px;
 			font-weight: 400;
 		}
 	}
@@ -328,15 +345,40 @@ a.button{
 
 	}
 
+	&.presentation {
+		#layers {
+			position: absolute;
+			display: block;
+			width: 100px;
+
+			text-align: right;
+			right: 10px;
+			bottom: 60px;
+			padding: 0;
+
+			button {
+				background: transparent;
+				color: white;
+				border: 0;
+			}
+		}
+		div{
+			button[rel] {
+				background: transparent;
+				color: white;
+				border: 0;
+				padding: 4px 6px;
+				&:hover{
+					background-color: rgba(255,255,255, 0.2);
+				}
+			}
+		}
+	}
 	#layers{
-		position: absolute;
-		background-color: rgba(0,0,0,0.2);
-		width: 100%;
-
-		left: 0;
-		bottom: 0;
-
-		padding: 10px 20px;
+		display: none;
+	}
+	button{
+		.clickable;
 	}
 }
 

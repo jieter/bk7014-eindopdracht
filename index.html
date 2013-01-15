@@ -46,6 +46,7 @@
 		<ul id="tabs">
 			<li rel="#url" class="hidden">url</li>
 			<li rel="#home">Home</li>
+			<li rel="#theorie">Theorie</li>
 			<li rel="#analyse">Analyse</li>
 			<li rel="#methodiek">Methodiek</li>
 			<li rel="#credits">Credits</li>
@@ -62,9 +63,23 @@
 				<p>
 					&ldquo;Analyseer het <em>stadsweefsel</em> in relatie tot de bewegingspatronen en modaliteit (BK7015)&rdquo;. Gebruik daarvoor de theorie van Meyer.
 				</p>
+				<h2>Interpretatie</h2>
+				<p>
+					Wij hebben ons gefocust op de bebouwingslaag van de stad Delft. Hierin hebben we een filter gemaakt van de openbare plint: de plint waar winkels, cafés, restaurants en openbare gebouwen aan grenzen. Dit hebben we vergeleken met de bewegingspatronen, van de deelnemers van <em>Delft van Boven</em>, in de vorm van een heatmap.
+				</p>
+				<p>
+					Verder hebben we een laag met terreinen toegevoegd om zo openbaar van privaat te onderscheiden. Terreinen zijn in Top10NL gedefinieerd als "een zichtbaar begrensd stuk grond, niet zijnde een van de andere opdelende objecten (weg of waterdeel)".
+				</p>
+				<p>
+					Vervolgens hebben we per wijk een overzicht gegeven met een aantal statistieken en de hoeveelheid deelnemers die in de wijk wonen, om zo per wijk een totaaloverzicht te geven.
+				</p>
+
+				<button rel="#theorie" class="uitleg-trigger">&raquo; Theorie</button>
+			</div>
+			<div id="theorie">
 				<h2>Theorie</h2>
 				<p>
-					H. Meyer geeft in zijn boek <em>Het ontwerp van de stadsplattegrond</em> aan dat het stedelijk weefsel van een stad bestaat uit meerdere lagen. Elk stedenbouwkundig ontwerp heeft te maken met een grondgebied dat geschikt moet worden gemaakt voor het gebruik voor de menselijke activiteiten (wonen, werk, vrije tijd, etc.).  De drie tussenliggende lagen bestaan uit de fysiekruimtelijke neerslag van het stedenbouwkundig werk.
+					Meyer geeft in zijn boek <em>Het ontwerp van de stadsplattegrond</em> aan dat het stedelijk weefsel van een stad bestaat uit meerdere lagen. Elk stedenbouwkundig ontwerp heeft te maken met een grondgebied dat geschikt moet worden gemaakt voor het gebruik voor de menselijke activiteiten (wonen, werk, vrije tijd, etc.).  De drie tussenliggende lagen bestaan uit de fysiekruimtelijke neerslag van het stedenbouwkundig werk.
 				</p>
 				<p>
 					Deze bestaan uit:
@@ -81,21 +96,26 @@
 				<p>
 					Tezamen vormen deze drie lagen het stedelijk weefsel van de stad, waarin de relatie van de drie lagen wordt samengevat in de stadsplattegrond.
 				</p>
-
 				<button rel="#analyse" class="uitleg-trigger">&raquo; analyse</button>
 			</div>
 			<div id="analyse">
 				<h2>Analyse</h2>
+				<p>
+					Wanneer de lagen <a href="#" data-layer="bebouwing">stadweefsel Delft (bebouwing)</a>, <a href="#" data-layer="heat">Delft van Boven Heatmap</a> worden aangezet  zien we duidelijk dat de bewegingspatronen van de deelnemers langs de bebouwing loopt. Op sommige punten zien we dat de heatmap in de bebouwing treed. Als we de bebouwing ordenen op openbare en private plinten zien we dat de heatmap vooral op plekken waar de plint openbaar is in bebouwing treed. Hieruit volgt dat de bewegingspatronen samenhangen met de openbare plint.
+				</p>
+				<p>
+					Als we uitzoomen naar een overzicht van de stad zien we dat van en naar en in de buurt van plekken met een openbare plint de stroom van deelnemers groter is dan wanneer er geen openbare plint is. Dit laat duidelijk zien dat de openbare plint een belangrijke functie heeft in het stadsweefsel, zoals ook Meyer bescrijft.
+				</p>
+				<p style="font-size: 0.8em">
+					<strong>Kanttekening: </strong>
+					Onder de deelnemers van het onderzoek zijn veel studenten die gebruikmaken van de Technische Universiteit. Dit is ook duidelijk terug te zien in de heatmap, voor hen is de TU Delft-campus ook een openbaar gebied.
+				</p>
+				<h2>Dichtheid</h2>
+				<p>
+					Als we kijken 
+				</p>
 
-				<p>
-					Wij hebben ons gefocust op de bebouwingslaag van de stad Delft. Hierin hebben we een filter gemaakt van de openbare plint: de plint waar winkels, cafés, restaurants en openbare gebouwen aan grenzen. Dit hebben we vergeleken met de bewegingspatronen, van de deelnemers van <em>Delft van Boven</em>, in de vorm van een heatmap.
-				</p>
-				<p>
-					Verder hebben we een laag met terreinen toegevoegd om zo openbaar van privaat te onderscheiden. Terreinen zijn in Top10NL gedefinieerd als "een zichtbaar begrensd stuk grond, niet zijnde een van de andere opdelende objecten (weg of waterdeel)".
-				</p>
-				<p>
-					Vervolgens hebben we per wijk een overzicht gegeven met een aantal statistieken en de hoeveelheid deelnemers die in de wijk wonen, om zo per wijk een totaaloverzicht te geven.
-				</p>
+
 				<button rel="#methodiek" class="uitleg-trigger">&raquo; methodiek</button>
 			</div>
 			<div id="methodiek">
@@ -104,7 +124,8 @@
 					Vanuit de Top10NL-dataset hebben we de verschillende lagen binnen de gemeentegrenzen van Delft (volgens de Wijk- en buurtkaart) geselecteerd, gestyled met Qgis en met de <a href="http://hub.qgis.org/projects/qtiles">Qtiles plugin</a> geëxporteerd naar <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Slippy map tiles</a>.
 				</p>
 				<p>
-					Vanuit de Wijk- en buurtkaart hebben we verchillende gegevens in grafiekjes gezet
+					Vanuit de Wijk- en buurtkaart hebben we verchillende gegevens in grafieken gezet. 
+				</p>
 				<button rel="#credits" class="uitleg-trigger">&raquo; Credits</button>
 			</div>
 
@@ -141,7 +162,10 @@
 			</div>
 		</div>
 		<div id="layers">
-			~ <button data-layer="terrein">Terrein</button> <button data-layer="heat">Heatmap</button> <button data-layer="bebouwing">Bebouwing</button> <button data-layer="plint">Plint</button>
+			<button data-layer="terrein">Terrein</button>
+			<button data-layer="heat">Heatmap</button>
+			<button data-layer="bebouwing">Bebouwing</button>
+			<button data-layer="plint">Plint</button>
 		</div>
 	</div>
 </body>

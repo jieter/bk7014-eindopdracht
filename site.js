@@ -41,7 +41,6 @@ dvb.addGeoJSON = function (url, map) {
 			};
 		},
 		onEachFeature: function (feature, layer) {
-			console.log(feature);
 			var center = L.latLngBounds(
 				// flip x/y for it is a geojson layer.
 				feature.geometry.coordinates[0].map(function (a) {
@@ -408,7 +407,11 @@ $(function () {
 		}
 	};
 
-	$('button[data-layer]').click(function () {
+	$('*[data-layer]').click(function () {
 		toggleLayer(layers[$(this).data('layer')]);
 	});
+
+	if(window.location.hash == '#presentatie'){
+		uitleg.find('.presentation').click();
+	}
 });
