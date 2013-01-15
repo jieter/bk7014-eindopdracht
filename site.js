@@ -143,7 +143,7 @@ dvb.makeMap = function () {
 		},
 		{
 			'Wijknummers': layers['wijkNummers'],
-			'Stadsweefsel Delft<br />(kavels)': layers['terrein'],
+			'Stadsweefsel Delft<br />(terreinen)': layers['terrein'],
 			'Delft van Boven<br />Heatmap alle deelnemers': layers['heat'],
 			'Stadsweefsel Delft<br />(bebouwing)': layers['bebouwing'],
 			'Openbare plint': layers['plint']
