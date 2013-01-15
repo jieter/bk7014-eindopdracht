@@ -227,7 +227,7 @@ dvb.drawDichtheid = function (geojson) {
 					ticks: xaxisLabels,
 					// min en max om linker en rechter padding ruimte te geven.
 					min: -1,
-					max: 13
+					max: 10
 				},
 				yaxis: {
 					ticks: 4
