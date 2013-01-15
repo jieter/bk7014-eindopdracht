@@ -11,7 +11,7 @@
     	 <link rel="stylesheet" href="js/leaflet/leaflet.ie.css" />
  	<![endif]-->
  	<style>
- 		@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+ 		@import url(https://fonts.googleapis.com/css?family=Lato:300italic,300,400,400italic,700);
  	</style>
  	<link href="css/site.less" rel="stylesheet/less" type="text/css" media="all" />
 
@@ -50,28 +50,41 @@
 			<li rel="#methodiek">Methodiek</li>
 			<li rel="#credits">Credits</li>
 			<li class="controls">
-				<div class="close">&times;</div><div class="bigger">&para;</div>
+				<div class="close">&times;</div><div class="presentation">&para;</div>
 			</li>
 		</ul>
 		<div id="content">
 			<div id="home" class="active">
 				<h2>Opdracht</h2>
 				<p>
-					"Analyseer het <em>stadsweefsel</em> in relatie tot de bewegingspatronen en modaliteit (BK7015)". Gebruik daarvoor de theorie van Meyer.
+					&ldquo;Analyseer het <em>stadsweefsel</em> in relatie tot de bewegingspatronen en modaliteit (BK7015)&rdquo;. Gebruik daarvoor de theorie van Meyer.
 				</p>
+				<h2>Stadsweefsel</h2>
+				<p>
+					<button class="stadsweefsel-on">~ Stadsweefsel</button>
+					<button class="heat-on">~ Heatmap</button>
+				</p>
+
+
+				<button rel="#analyse" class="uitleg-trigger">&raquo; analyse</button>
 			</div>
 			<div id="analyse">
-				<h2>Wat zien we </h2>
+				<h2>Analyse</h2>
+
+				<p>
+				</p>
+				<button rel="#methodiek" class="uitleg-trigger">&raquo; methodiek</button>
 			</div>
 			<div id="methodiek">
 				<h2>Methodiek</h2>
 				<p>
 					Vanuit de Top10NL-dataset hebben we de gebouwen binnen de gemeentegrenzen van Delft (volgens de Wijk- en buurtkaart) geselecteerd, gestyled met Qgis en met de <a href="http://hub.qgis.org/projects/qtiles">Qtiles plugin</a> geëxporteerd naar <a href="http://wiki.openstreetmap.org/wiki/Slippy_Map">Slippy map tiles</a>.
 				</p>
+				<button rel="#credits" class="uitleg-trigger">&raquo; Credits</button>
 			</div>
 
 			<div id="credits">
-				Opdracht door Roxanne Kiel en Jan Pieter Waagmeester
+				Opdracht voor de cursus <em>BK7014</em> door Roxanne Kiel en Jan Pieter Waagmeester.
 
 				<h2>Software</h2>
 				<ul>
@@ -97,6 +110,7 @@
 						Diverse boeken van Meyer uit de Bouwkundebibliotheek
 					</li>
 				</ul>
+				<button class="close" rel="">&times; sluiten</button>
 			</div>
 		</div>
 	</div>

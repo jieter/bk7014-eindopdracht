@@ -92,6 +92,10 @@ dvb.addGeoJSON = function (url, map) {
 };
 
 var wijken;
+var weefsel;
+var heat;
+var heat_all_all;
+var openbarePlint;
 
 dvb.makeMap = function () {
 	var delftCenter = [52.002, 4.36];
@@ -121,15 +125,19 @@ dvb.makeMap = function () {
 	});
 
 	var omgeving = L.tileLayer('data/omgeving/{z}/{x}/{y}.png').addTo(map);
-	var heat_all_all = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {
+	heat = L.tileLayer('data/heat_new/Mapnik/{z}/{x}/{y}.png', {
+			opacity: 0.6
+		}
+	);
+	heat_all_all = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {
 			opacity: 0.6
 		}
 	);//.addTo(map);
 
 
 
-	var weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
-	var openbarePlint = L.tileLayer('data/plint/{z}/{x}/{y}.png');//.addTo(map);
+	weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
+	openbarePlint = L.tileLayer('data/plint/{z}/{x}/{y}.png');//.addTo(map);
 
 	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
 
@@ -347,7 +355,7 @@ dvb.drawPie = function (feature) {
 };
 
 $(function () {
-	dvb.makeMap();
+	var map = dvb.makeMap();
 
 	var uitleg = $('#uitleg');
 
@@ -373,13 +381,50 @@ $(function () {
 			uitleg.hide(300);
 		}
 	});
-	uitleg.find('.bigger').on({
+	function resize() {
+		if( uitleg.hasClass('presentation')) {
+			uitleg.offset({
+				top: $(window).innerHeight() - uitleg.outerHeight(),
+				left: 0
+			});
+		}
+	}
+	uitleg.on('resize', resize);
+	uitleg.find('.presentation').on({
 		click: function () {
-			uitleg.toggleClass('bigger');
+			uitleg.toggleClass('presentation');
+
+			resize();
+			var docElm = document.documentElement;
+			if (docElm.requestFullscreen) {
+				docElm.requestFullscreen();
+			} else if (docElm.mozRequestFullScreen) {
+				docElm.mozRequestFullScreen();
+			} else if (docElm.webkitRequestFullScreen) {
+				docElm.webkitRequestFullScreen();
+			}
 		}
 	})
 
 	$('#tabs li[rel="#home"]').click();
 
 	$('.uitleg').drags({'handle': 'h1'});
+
+	var toggleLayer = function (layer) {
+		if (map.hasLayer(layer)) {
+			map.removeLayer(layer);
+		} else {
+			map.addLayer(layer);
+		}
+	};
+
+	$('.stadsweefsel-on').click(function () {
+		toggleLayer(weefsel);
+	});
+	$('.heat-on').click(function () {
+		toggleLayer(heat_all_all);
+	});
+	$('.plint-on').click(function () {
+		toggleLayer(openbarePlint);
+	});
 });
