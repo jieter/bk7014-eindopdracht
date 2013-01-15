@@ -20,7 +20,6 @@
 	<script src="js/less-1.3.0.min.js" type="application/javascript"></script>
 
 	<script src="js/leaflet/leaflet-src.js" type="application/javascript"></script>
-	<script src="js/leaflet/Control.MiniMap.js" type="application/javascript"></script>
 
 	<script src="js/flot/jquery.flot.js" type="application/javascript"></script>
 	<script src="js/flot/jquery.flot.pie.js"></script>
@@ -45,6 +44,7 @@
 		<h1>BK7014 &mdash; Leefomgeving en Activiteiten</h1>
 
 		<ul id="tabs">
+			<li rel="#url" class="hidden">url</li>
 			<li rel="#home">Home</li>
 			<li rel="#analyse">Analyse</li>
 			<li rel="#methodiek">Methodiek</li>
@@ -54,6 +54,9 @@
 			</li>
 		</ul>
 		<div id="content">
+			<div id="url">
+				<a href="http://jieter.nl/bk7014-eindopdracht/">http://jieter.nl/bk7014-eindopdracht/</a>
+			</div>
 			<div id="home" class="active">
 				<h2>Opdracht</h2>
 				<p>
@@ -61,10 +64,10 @@
 				</p>
 				<h2>Stadsweefsel</h2>
 				<p>
-					<button class="stadsweefsel-on">~ Stadsweefsel</button>
-					<button class="heat-on">~ Heatmap</button>
-				</p>
 
+					<button data-layer="bebouwing">~ bebouwing</button> <br />
+					<button data-layer="heat">~ Heatmap</button>
+				</p>
 
 				<button rel="#analyse" class="uitleg-trigger">&raquo; analyse</button>
 			</div>

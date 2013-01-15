@@ -25,13 +25,10 @@ function highlightFeature(e) {
 	}
 }
 function resetHighlight(e) {
-	wijken.resetStyle(e.target);
+	layers['wijken'].resetStyle(e.target);
 }
-var wijkNummers
 
 dvb.addGeoJSON = function (url, map) {
-
-	wijkNummers = L.layerGroup().addTo(map);
 	var layer = L.geoJson(null, {
 		style: function () {
 			return {
@@ -44,7 +41,7 @@ dvb.addGeoJSON = function (url, map) {
 			};
 		},
 		onEachFeature: function (feature, layer) {
-
+			console.log(feature);
 			var center = L.latLngBounds(
 				// flip x/y for it is a geojson layer.
 				feature.geometry.coordinates[0].map(function (a) {
@@ -52,7 +49,7 @@ dvb.addGeoJSON = function (url, map) {
 				})
 			).getCenter();
 
-			wijkNummers.addLayer(L.marker(center, {
+			layers['wijkNummers'].addLayer(L.marker(center, {
 				icon: L.divIcon({
 					iconSize: [40, 40],
 					html: feature.properties.WK_NAAM.substring(5, 7)
@@ -63,18 +60,18 @@ dvb.addGeoJSON = function (url, map) {
 				'mouseover': function (e) {
 					highlightFeature(e);
 					dvb.drawPie(feature);
-					map.removeLayer(wijkNummers);
+					map.removeLayer(layers['wijkNummers']);
 				},
 				'mouseout': function (e) {
 					resetHighlight(e);
-					if (!map.hasLayer(wijkNummers)) {
-						map.addLayer(wijkNummers);
+					if (!map.hasLayer(layers['wijkNummers'])) {
+						map.addLayer(layers['wijkNummers']);
 					}
 					dvb.drawDichtheid(geojson);
 				}
 			});
 		}
-	}).addTo(map);
+	});
 
 	$.getJSON(url).success(function (response) {
 		// amend properties with bebouwingsdichtheid.
@@ -91,11 +88,7 @@ dvb.addGeoJSON = function (url, map) {
 	return layer;
 };
 
-var wijken;
-var weefsel;
-var heat;
-var heat_all_all;
-var openbarePlint;
+var layers = {};
 
 dvb.makeMap = function () {
 	var delftCenter = [52.002, 4.36];
@@ -111,11 +104,10 @@ dvb.makeMap = function () {
 
 	map.attributionControl
 		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
-		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Bronvermelding</a>');
+		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Bronvermelding</a>')
+		.addAttribution(' &mdash; <a href="#" rel="#url" class="uitleg-trigger">Permalink</a>');
 
-	L.control.scale({
-		imperial: false
-	}).addTo(map);
+	// OSM layer.
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
 	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
 	var osm = L.tileLayer(osm_url, {
@@ -123,49 +115,42 @@ dvb.makeMap = function () {
 		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' +
 		' <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
 	});
+	L.control.scale({
+		imperial: false
+	}).addTo(map);
 
-	var omgeving = L.tileLayer('data/omgeving/{z}/{x}/{y}.png').addTo(map);
-	heat = L.tileLayer('data/heat_new/Mapnik/{z}/{x}/{y}.png', {
-			opacity: 0.6
+	// custom layers
+	layers['omgeving'] = L.tileLayer('data/omgeving/{z}/{x}/{y}.png').addTo(map);
+
+	layers['wijkNummers'] = L.layerGroup().addTo(map);
+	layers['terrein'] = L.tileLayer('data/terrein/{z}/{x}/{y}.png').addTo(map);
+	layers['heat'] = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {opacity: 0.6}).addTo(map);
+	layers['bebouwing'] = L.tileLayer('data/bebouwing/{z}/{x}/{y}.png').addTo(map);
+	layers['plint'] = L.tileLayer('data/plint/{z}/{x}/{y}.png').addTo(map);
+	layers['wijken'] = dvb.addGeoJSON('data/wijken/wijken.geojson', map).addTo(map);
+
+	$.each(['terrein', 'heat', 'bebouwing', 'plint'], function (_, name) {
+		if (layers[name] && map.hasLayer(layers[name])) {
+			map.removeLayer(layers[name]);
 		}
-	);
-	heat_all_all = L.tileLayer('data/heat_all_all/{z}/{x}/{y}.png', {
-			opacity: 0.6
-		}
-	);//.addTo(map);
-
-
-
-	weefsel = L.tileLayer('data/weefsel/{z}/{x}/{y}.png');//.addTo(map);
-	openbarePlint = L.tileLayer('data/plint/{z}/{x}/{y}.png');//.addTo(map);
-
-	wijken = dvb.addGeoJSON('data/wijken/wijken.geojson', map);
+	});
 
 	var layerControl = new L.Control.Layers(
 		{
-			'Bebouwing omgeving': omgeving,
+			'Bebouwing omgeving': layers['omgeving'],
 			'OpenStreetMap': osm
 		},
 		{
-			'Wijknummers': wijkNummers,
-			'Delft van Boven<br />Heatmap alle deelnemers': heat_all_all,
-			'Stadsweefsel Delft<br />(bebouwing)': weefsel,
-			'Openbare plint': openbarePlint
-
+			'Wijknummers': layers['wijkNummers'],
+			'Stadsweefsel Delft<br />(kavels)': layers['terrein'],
+			'Delft van Boven<br />Heatmap alle deelnemers': layers['heat'],
+			'Stadsweefsel Delft<br />(bebouwing)': layers['bebouwing'],
+			'Openbare plint': layers['plint']
 		},
 		{
 			collapsed: false
 		}
 	).addTo(map);
-
-	new L.Control.MiniMap(
-		L.tileLayer('http://{s}.tile.stamen.com/toner-lite/{z}/{x}/{y}.png'), {
-			zoomLevelFixed: 13,
-			//zoomLevelOffset: -3,
-			width: 300,
-			height: 300
-		}
-	);//.addTo(map);
 
 	return map;
 };
@@ -385,7 +370,7 @@ $(function () {
 		if( uitleg.hasClass('presentation')) {
 			uitleg.offset({
 				top: $(window).innerHeight() - uitleg.outerHeight(),
-				left: 0
+				left: $(window).innerWidth() - uitleg.outerWidth()
 			});
 		}
 	}
@@ -411,6 +396,9 @@ $(function () {
 	$('.uitleg').drags({'handle': 'h1'});
 
 	var toggleLayer = function (layer) {
+		if (!layer) {
+			return;
+		}
 		if (map.hasLayer(layer)) {
 			map.removeLayer(layer);
 		} else {
@@ -418,13 +406,7 @@ $(function () {
 		}
 	};
 
-	$('.stadsweefsel-on').click(function () {
-		toggleLayer(weefsel);
-	});
-	$('.heat-on').click(function () {
-		toggleLayer(heat_all_all);
-	});
-	$('.plint-on').click(function () {
-		toggleLayer(openbarePlint);
+	$('button[data-layer]').click(function () {
+		toggleLayer(layers[$(this).data('layer')]);
 	});
 });

@@ -183,6 +183,7 @@ a.button{
 
 	width: 30%;
 	max-width: 450px;
+	min-height: 40%;
 	margin: 60px 20px;
 	padding: 10px 20px;
 
@@ -196,7 +197,6 @@ a.button{
 	.transition-linear(width 0.2s, 0s);
 
 	&.presentation {
-		min-height: 40%;
 		max-width: none;
 		font-size: 16px;
 		font-weight: 400;
@@ -218,6 +218,7 @@ a.button{
 					}
 				}
 			}
+			
 		}
 
 		a{
@@ -245,7 +246,11 @@ a.button{
 				background-color: rgba(0,0,0,0.1);
 
 			}
+
 		}
+		li[rel="#url"]{
+				display: none;
+			}
 
 	}
 	h1 {
@@ -293,6 +298,15 @@ a.button{
 			position: absolute;
 			right: 10px;
 			bottom: 10px;
+		}
+	}
+	#url {
+		text-align: center;
+		width: 100%;
+		padding: 40px 0;
+		a {
+			font-size: 20px;
+			font-weight: 400;
 		}
 	}
 	div ul {
