@@ -103,8 +103,8 @@ dvb.makeMap = function () {
 	}).setView(delftCenter, 14);
 
 	map.attributionControl
-		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Credits</a>')
-		.addAttribution(' &mdash; <a href="#" rel="#url" class="uitleg-trigger">Permalink</a>');
+		.addAttribution(' <a href="#" rel="#credits" class="uitleg-trigger">Credits</a>')
+		.addAttribution(' <a href="#" rel="#url" class="uitleg-trigger">Permalink</a>');
 
 	// OSM layer.
 	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
@@ -375,19 +375,24 @@ $(function () {
 		}
 	}
 	uitleg.on('resize', resize);
+	$(window).on('resize', resize);
+
 	uitleg.find('.presentation').on({
 		click: function () {
+			if (!uitleg.hasClass('presentation')) {
+				var docElm = document.documentElement;
+				if (docElm.requestFullscreen) {
+					docElm.requestFullscreen();
+				} else if (docElm.mozRequestFullScreen) {
+					docElm.mozRequestFullScreen();
+				} else if (docElm.webkitRequestFullScreen) {
+					docElm.webkitRequestFullScreen();
+				}
+			}
 			uitleg.toggleClass('presentation');
 
 			resize();
-			var docElm = document.documentElement;
-			if (docElm.requestFullscreen) {
-				docElm.requestFullscreen();
-			} else if (docElm.mozRequestFullScreen) {
-				docElm.mozRequestFullScreen();
-			} else if (docElm.webkitRequestFullScreen) {
-				docElm.webkitRequestFullScreen();
-			}
+			
 		}
 	})
 
