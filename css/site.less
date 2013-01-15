@@ -296,7 +296,9 @@ a.button{
 			position: absolute;
 			right: 10px;
 			bottom: 10px;
+			z-index: 9999999999;
 		}
+
 	}
 	#url {
 		text-align: center;
@@ -309,7 +311,7 @@ a.button{
 	}
 	div ul {
 		list-style: none;
-		margin-left: 6px;
+		margin-left: 3px;
 		padding-left: 0;
 		li {
 			font-size: 0.9em;
@@ -319,10 +321,22 @@ a.button{
 			content: '■';
 			color: #999;
 			padding-right: 4px;
-			position: relative;
-			float:left;
-			left: -10px;
 		}
+	}
+	#content {
+		margin-bottom: 60px;
+
+	}
+
+	#layers{
+		position: absolute;
+		background-color: rgba(0,0,0,0.2);
+		width: 100%;
+
+		left: 0;
+		bottom: 0;
+
+		padding: 10px 20px;
 	}
 }
 
