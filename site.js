@@ -103,8 +103,7 @@ dvb.makeMap = function () {
 	}).setView(delftCenter, 14);
 
 	map.attributionControl
-		.addAttribution('<a href="http://qgis.org">Qgis</a>, QTiles, <a href="http://flotcharts.org">Flot</a>')
-		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Bronvermelding</a>')
+		.addAttribution(' &mdash; Data:<a href="#" rel="#credits" class="uitleg-trigger">Credits</a>')
 		.addAttribution(' &mdash; <a href="#" rel="#url" class="uitleg-trigger">Permalink</a>');
 
 	// OSM layer.
