@@ -100,7 +100,8 @@ dvb.makeMap = function () {
 				[51.95262362986526, 4.26492691040039],
 				[52.05048476578602, 4.461994171142578]
 			]).pad(20)
-	}).setView(delftCenter, 14);
+		}
+	).setView(delftCenter, 14);
 
 	map.attributionControl
 		.addAttribution(' <a href="#" rel="#credits" class="uitleg-trigger">Credits</a>')
@@ -367,7 +368,7 @@ $(function () {
 		}
 	});
 	function resize() {
-		if( uitleg.hasClass('presentation')) {
+		if (uitleg.hasClass('presentation')) {
 			uitleg.offset({
 				top: $(window).innerHeight() - uitleg.outerHeight(),
 				left: $(window).innerWidth() - uitleg.outerWidth()
@@ -392,9 +393,8 @@ $(function () {
 			uitleg.toggleClass('presentation');
 
 			resize();
-			
 		}
-	})
+	});
 
 	$('#tabs li[rel="#home"]').click();
 
@@ -415,7 +415,7 @@ $(function () {
 		toggleLayer(layers[$(this).data('layer')]);
 	});
 
-	if(window.location.hash == '#presentatie'){
+	if (window.location.hash == '#presentatie') {
 		uitleg.find('.presentation').click();
 	}
 });
