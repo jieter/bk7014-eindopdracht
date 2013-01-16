@@ -371,7 +371,7 @@ $(function () {
 		if (uitleg.hasClass('presentation')) {
 			uitleg.offset({
 				top: $(window).innerHeight() - uitleg.outerHeight(),
-				left: $(window).innerWidth() - uitleg.outerWidth()
+				left: 0
 			});
 		}
 	}
