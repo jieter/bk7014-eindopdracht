@@ -107,13 +107,9 @@ dvb.makeMap = function () {
 		.addAttribution(' <a href="#" rel="#credits" class="uitleg-trigger">Credits</a>')
 		.addAttribution(' <a href="#" rel="#url" class="uitleg-trigger">Permalink</a>');
 
-	// OSM layer.
-	var osm_url = 'http://{s}.tile.cloudmade.com/{key}/997/256/{z}/{x}/{y}.png';
-	var apikey = 'c0ccf9b0519d42c2867dd5dd4c1f3c24';
-	var osm = L.tileLayer(osm_url, {
-		key: apikey,
-		attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors,' +
-		' <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+	var osm = L.tileLayer('http://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>, Tiles courtesy of <a href="http://hot.openstreetmap.org/" target="_blank">Humanitarian OpenStreetMap Team</a>'
 	});
 	L.control.scale({
 		imperial: false
